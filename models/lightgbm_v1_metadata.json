@@ -1,0 +1,35 @@
+{
+  "model_type": "LightGBM",
+  "version": "v1",
+  "trained_at": "2025-11-19T15:49:19.285644",
+  "n_features": 50,
+  "train_samples": 3885,
+  "test_samples": 972,
+  "params": {
+    "objective": "regression",
+    "metric": "mae",
+    "boosting_type": "gbdt",
+    "num_leaves": 64,
+    "learning_rate": 0.05,
+    "n_estimators": 200,
+    "max_depth": 15,
+    "min_child_samples": 20,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "reg_alpha": 0.1,
+    "reg_lambda": 0.1,
+    "random_state": 42,
+    "n_jobs": -1,
+    "verbose": -1
+  },
+  "train_metrics": {
+    "mae": 4.185857993026075,
+    "rmse": 6.58881987409222,
+    "r2": 0.9992117292849442
+  },
+  "test_metrics": {
+    "mae": 15.20432638135621,
+    "rmse": 28.086827526630337,
+    "r2": 0.98515092918954
+  }
+}

@@ -1,0 +1,182 @@
+
+📊 Loading data from PostgreSQL...
+✓ Loaded 17,248 rows, 392 columns
+======================================================================
+  CHECK 1: BASIC DATASET STATISTICS
+======================================================================
+
+Total rows:        17,248
+Total columns:     392
+Memory usage:      53.03 MB
+
+Time range:
+  Start:           2003-10-22 06:36:24+00:00
+  End:             2003-11-25 18:09:56+00:00
+  Duration:        34 days
+
+Bearing distribution:
+  Bearing 1-x: 2,156 rows
+  Bearing 1-y: 2,156 rows
+  Bearing 2-x: 2,156 rows
+  Bearing 2-y: 2,156 rows
+  Bearing 3-x: 2,156 rows
+  Bearing 3-y: 2,156 rows
+  Bearing 4-x: 2,156 rows
+  Bearing 4-y: 2,156 rows
+
+Label distribution:
+  Failed bearings:   9,717 rows (56.3%)
+  Censored bearings: 8,624 rows (50.0%)
+
+RUL statistics (failed bearings):
+  Min RUL:         0.00 hours
+  Max RUL:         827.56 hours
+  Mean RUL:        317.53 hours
+  Median RUL:      245.85 hours
+======================================================================
+  CHECK 2: NULL VALUE ANALYSIS
+======================================================================
+
+⚠ Found 102 columns with null values:
+
+  rul_seconds                             :  8,624 nulls (50.00%)
+    ⚠ WARNING: >5% null rate!
+  rul_hours                               :  7,531 nulls (43.66%)
+    ⚠ WARNING: >5% null rate!
+  bp_5k_10k_mean_roll_5_std               :      8 nulls ( 0.05%)
+  bp_1k_5k_std_roll_5_std                 :      8 nulls ( 0.05%)
+  bp_5k_10k_std_roll_5_std                :      8 nulls ( 0.05%)
+  bp_5k_10k_mean_roll_10_std              :      8 nulls ( 0.05%)
+  bp_0_1k_mean_roll_10_std                :      8 nulls ( 0.05%)
+  std_std_roll_5_std                      :      8 nulls ( 0.05%)
+  crest_factor_mean_roll_5_std            :      8 nulls ( 0.05%)
+  crest_factor_std_roll_10_std            :      8 nulls ( 0.05%)
+  std_std_slope_10                        :      8 nulls ( 0.05%)
+  rms_mean_slope_10                       :      8 nulls ( 0.05%)
+  bp_5k_10k_std_roll_3_std                :      8 nulls ( 0.05%)
+  kurtosis_std_slope_5                    :      8 nulls ( 0.05%)
+  bp_0_1k_std_roll_3_std                  :      8 nulls ( 0.05%)
+  skew_std_slope_10                       :      8 nulls ( 0.05%)
+  skew_mean_slope_10                      :      8 nulls ( 0.05%)
+  spec_centroid_mean_roll_10_std          :      8 nulls ( 0.05%)
+  peak_to_peak_std_slope_5                :      8 nulls ( 0.05%)
+  bp_5k_10k_mean_roll_3_std               :      8 nulls ( 0.05%)
+
+Expected nulls (censored bearing RUL):
+  Censored rows:   8,624
+  RUL nulls:       3,764
+  ⚠ Mismatch: 4860 censored rows have RUL
+======================================================================
+  CHECK 3: OUTLIER DETECTION (Z-SCORE > 3)
+======================================================================
+
+Analyzing 382 numeric features...
+
+⚠ Found outliers in 46 features:
+
+  crest_factor_mean                       :  511 outliers ( 2.96%), max z-score: 11.33
+    ⚠ WARNING: >1% outlier rate - investigate!
+  std_std_ema_10                          :  402 outliers ( 2.33%), max z-score: 19.46
+    ⚠ WARNING: >1% outlier rate - investigate!
+  peak_to_peak_std                        :  397 outliers ( 2.30%), max z-score: 13.63
+    ⚠ WARNING: >1% outlier rate - investigate!
+  skew_std_ema_10                         :  388 outliers ( 2.25%), max z-score: 11.48
+    ⚠ WARNING: >1% outlier rate - investigate!
+  crest_factor_std                        :  378 outliers ( 2.19%), max z-score: 12.66
+    ⚠ WARNING: >1% outlier rate - investigate!
+  kurtosis_mean                           :  367 outliers ( 2.13%), max z-score: 20.96
+    ⚠ WARNING: >1% outlier rate - investigate!
+  skew_std_roll_10_mean                   :  364 outliers ( 2.11%), max z-score: 13.51
+    ⚠ WARNING: >1% outlier rate - investigate!
+  peak_to_peak_mean                       :  360 outliers ( 2.09%), max z-score: 20.93
+    ⚠ WARNING: >1% outlier rate - investigate!
+  crest_factor_std_roll_3_std             :  350 outliers ( 2.03%), max z-score: 14.64
+    ⚠ WARNING: >1% outlier rate - investigate!
+  kurtosis_std_ema_30                     :  325 outliers ( 1.88%), max z-score: 16.61
+    ⚠ WARNING: >1% outlier rate - investigate!
+======================================================================
+  CHECK 4: DUPLICATE TIMESTAMP DETECTION
+======================================================================
+
+✓ No duplicate timestamps found
+======================================================================
+  CHECK 5: FEATURE DRIFT ANALYSIS (EARLY VS LATE)
+======================================================================
+
+Comparing distributions:
+  Early  3,449 rows (first 20%)
+  Late   3,450 rows (last 20%)
+
+Feature drift summary:
+
+  rms_mean                 : Early=  0.1398, Late=  0.1664, Change=+19.02%
+  kurtosis_mean            : Early=  0.7767, Late=  1.8717, Change=+140.98%
+    ⚠ Significant drift detected!
+  crest_factor_mean        : Early=  3.4899, Late=  4.1017, Change=+17.53%
+  bp_1k_5k_mean            : Early=  0.0034, Late=  0.0082, Change=+140.26%
+    ⚠ Significant drift detected!
+  bp_5k_10k_mean           : Early=  0.0027, Late=  0.0043, Change=+61.97%
+    ⚠ Significant drift detected!
+
+⚠ Drift detected in 3 features: kurtosis_mean, bp_1k_5k_mean, bp_5k_10k_mean
+======================================================================
+  CHECK 6: FEATURE RANGE VALIDATION
+======================================================================
+
+Validating feature ranges against expected bounds:
+
+  ✓ rms_mean                 : Range=[  0.0621,   0.5914], Expected=[  0.01,   2.00]
+  ✓ kurtosis_mean            : Range=[ -0.0888,  39.0409], Expected=[ -5.00,  50.00]
+  ⚠ crest_factor_mean        : Range=[  2.2479,  11.1745], Expected=[  1.00,  10.00]
+    ⚠ 3 values (0.02%) out of range
+  ✓ bp_0_1k_mean             : Range=[  0.0006,   0.0223], Expected=[  0.00,   0.10]
+  ⚠ bp_1k_5k_mean            : Range=[  0.0015,   0.1269], Expected=[  0.00,   0.10]
+    ⚠ 5 values (0.03%) out of range
+  ⚠ bp_5k_10k_mean           : Range=[  0.0006,   0.1600], Expected=[  0.00,   0.10]
+    ⚠ 4 values (0.02%) out of range
+======================================================================
+  CHECK 7: TEMPORAL FEATURE CONSISTENCY
+======================================================================
+
+Validating temporal feature computation:
+
+  RMS vs Rolling Mean (window=5):
+    Mean difference: 0.001036
+    Max difference:  0.168963
+    ✓ Rolling mean tracking base feature correctly
+
+  RMS Slope Analysis:
+    Mean slope:      0.000068
+    Std slope:       0.001515
+    Extreme slopes:  32 (0.19%)
+======================================================================
+  VALIDATION SUMMARY
+======================================================================
+
+⚠ FOUND 20 ISSUES:
+
+  1.     ⚠ WARNING: >5% null rate!
+  2.     ⚠ WARNING: >5% null rate!
+  3.   ⚠ Mismatch: 4860 censored rows have RUL
+  4.     ⚠ WARNING: >1% outlier rate - investigate!
+  5.     ⚠ WARNING: >1% outlier rate - investigate!
+  6.     ⚠ WARNING: >1% outlier rate - investigate!
+  7.     ⚠ WARNING: >1% outlier rate - investigate!
+  8.     ⚠ WARNING: >1% outlier rate - investigate!
+  9.     ⚠ WARNING: >1% outlier rate - investigate!
+  10.     ⚠ WARNING: >1% outlier rate - investigate!
+  11.     ⚠ WARNING: >1% outlier rate - investigate!
+  12.     ⚠ WARNING: >1% outlier rate - investigate!
+  13.     ⚠ WARNING: >1% outlier rate - investigate!
+  14.     ⚠ Significant drift detected!
+  15.     ⚠ Significant drift detected!
+  16.     ⚠ Significant drift detected!
+  17. 
+⚠ Drift detected in 3 features: kurtosis_mean, bp_1k_5k_mean, bp_5k_10k_mean
+  18.     ⚠ 3 values (0.02%) out of range
+  19.     ⚠ 5 values (0.03%) out of range
+  20.     ⚠ 4 values (0.02%) out of range
+
+======================================================================
+Validation completed at 2025-11-18 16:00:20
+======================================================================

@@ -1,0 +1,133 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Data Files (large files - not tracked)
+data/raw/**
+*.rar
+*.zip
+*.tar.gz
+*.parquet
+
+# Model Files (large files - not tracked)
+models/*.pkl
+models/*.h5
+models/*.joblib
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment Variables
+.env
+
+# Documentation Temp Files
+*.docx
+output_pipeline.pdf
+generate_pdf.py
+
+# Logs
+*.log
+logs/
+
+# OS Files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Archives & Notebooks (keep local only)
+archive/
+notebooks/
+*.ipynb
+
+# Docker (if not using)
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# Temporary Files
+*.tmp
+*.temp
+.cache/
+
+# Coverage Reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# pytest
+.pytest_cache/
+
+# Keep These Files (exceptions to above rules)
+!.gitignore
+!README.md
+!LICENSE
+!requirements.txt
+!.env.example
+
+# Keep Small CSVs in processed/
+!data/processed/*.csv
+
+# Keep Key Plots
+!reports/feature_trends/*.png
+!reports/evaluation/*.png
+!reports/feature_importance.png
+!reports/streamlit_dashboard/*.pdf
+
+# Additional documentation/temp files
+data/*.docx
+data/*.pdf
+data/*.md
+data/generate_pdf.py
+data/output_pipeline.pdf
+data/external/
+
+# Keep only processed CSVs
+data/processed/*.parquet
+data/*.docx
+data/*.pdf
+data/*.md
+data/generate_pdf.py
+data/output_pipeline.pdf
+data/external/
+
+# Keep only processed CSVs
+data/processed/*.parquet
