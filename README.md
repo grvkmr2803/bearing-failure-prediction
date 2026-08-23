@@ -508,23 +508,9 @@ At RUL=10h:   30h error = 300% error (catastrophic!)
 
 ---
 
-## 📄 License
 
-MIT License - see [LICENSE](LICENSE) file for details.
 
----
 
-## 📧 Contact
-
-**Anudeep**  
-Mechanical Engineer → Data Scientist
-
-- **LinkedIn:** [linkedin.com/in/anudeep-reddy-mutyala](https://linkedin.com/in/anudeep-reddy-mutyala)
-- **GitHub:** [github.com/anudeepreddy332](https://github.com/anudeepreddy332)
-- **Portfolio:** [themachinist.org](https://themachinist.org/)
-- **Email:** anudeepreddy332@gmail.com
-
----
 
 ## 🙏 Acknowledgments
 
@@ -536,7 +522,4 @@ Mechanical Engineer → Data Scientist
 
 **⭐ If you found this project helpful, please consider giving it a star!**
 
----
 
-*Last updated: November 20, 2025*
-```
